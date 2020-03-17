@@ -28,9 +28,8 @@ for r=1:nr
     %create rabbit agents with random ages between 0 and 10 days and random
     %food levels 20-40
     age=ceil(rand*10);
-    %food=ceil(rand*20)+20;
-    %lbreed=round(rand*PARAM.R_BRDFQ);
-    agent{r}=rabbit(age,pos,PARAM.R_SPD);
+    lbreed=round(rand*PARAM.R_BRDFQ);
+    agent{r}=rabbit(age,food,pos,PARAM.R_SPD,lbreed);
 end
 
 %generate all fox agents and record their positions in ENV_MAT_F
@@ -39,7 +38,7 @@ for f=nr+1:nr+nf
     %create fox agents with random ages between 0 and 10 days and random
     %food levels 20-40
     age=ceil(rand*10);
-    %food=ceil(rand*20)+20;
-    %lbreed=round(rand*PARAM.F_BRDFQ);
-    agent{f}=fox(age,pos,PARAM.F_SPD);
+    food=ceil(rand*20)+20;
+    lbreed=round(rand*PARAM.F_BRDFQ);
+    agent{f}=fox(age,food,pos,PARAM.F_SPD,lbreed);
 end

@@ -1,10 +1,8 @@
 classdef rabbit   %declares rabbit object
     properties    %define rabbit properties (parameters) 
         age; 
-        food;
         pos;
         speed;
-        last_breed;
     end
     methods                         %note that this class definition mfile contains only the constructor method!
                                     %all additional member functions associated with this class are included as separate mfiles in the @rabbit folder. 
