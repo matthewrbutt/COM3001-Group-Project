@@ -27,7 +27,7 @@ for r=1:nr
     pos=rloc(r,:);
     %create rabbit agents with random ages between 0 and 10 days and random
     %food levels 20-40
-    age=ceil(rand*10);
+    age=0;
     %food=ceil(rand*20)+20;
     %lbreed=round(rand*PARAM.R_BRDFQ);
     agent{r}=rabbit(age,pos,PARAM.R_SPD);
