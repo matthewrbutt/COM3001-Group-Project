@@ -22,7 +22,7 @@ classdef rabbit   %declares rabbit object
                        %r.food=[];
                        r.pos=[];
                        r.speed=[];
-                       %r.last_breed=[];
+                       r.last_breed=[];
                     case 1              %input is already a rabbit, so just return!
                        if (isa(varargin{1},'rabbit'))		
                             r=varargin{1};
@@ -30,11 +30,11 @@ classdef rabbit   %declares rabbit object
                             error('Input argument is not a rabbit')
                             
                        end
-                    case 3               %create a new rabbit (currently the only constructor method used)
+                    case 5               %create a new rabbit (currently the only constructor method used)
                        r.age=varargin{1};               %age of rabbit object in number of iterations
                        %r.food=varargin{2};              %current food content (arbitrary units)
-                       r.pos=varargin{2};               %current position in Cartesian co-ords [x y]
-                       r.speed=varargin{3};             %number of kilometres rabbit can migrate in 1 day
+                       r.pos=varargin{3};               %current position in Cartesian co-ords [x y]
+                       r.speed=varargin{4};             %number of kilometres rabbit can migrate in 1 day
                        %r.last_breed=varargin{5};        %number of iterations since rabbit last reproduced.
                     otherwise
                        error('Invalid no. of input arguments')

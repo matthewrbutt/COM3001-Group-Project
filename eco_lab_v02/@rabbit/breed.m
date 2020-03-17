@@ -12,11 +12,11 @@ global PARAM IT_STATS N_IT
 %PARAM is data structure containing migration speed and breeding
 %frequency parameters for both foxes and rabbits
    
-flim=PARAM.R_FOODBRD;       %minimum food level required for breeding
-tlim=PARAM.R_BRDFQ;         %minimum interval required for breeding
-cfood=agt.food;              %get current agent food level
+%flim=PARAM.R_FOODBRD;       %minimum food level required for breeding
+%tlim=PARAM.R_BRDFQ;         %minimum interval required for breeding
+%cfood=agt.food;              %get current agent food level
 age=agt.age;                %get current agent age
-last_breed=agt.last_breed;  %length of time since agent last reproduced
+%last_breed=agt.last_breed;  %length of time since agent last reproduced
 pos=agt.pos;         %current position
 
-new=fox(0,cfood/2,pos,PARAM.R_SPD,0);   %new fox agent
+new=fox(0,pos,PARAM.F_SPD);   %new fox agent

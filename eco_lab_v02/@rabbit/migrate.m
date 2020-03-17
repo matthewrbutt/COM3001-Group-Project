@@ -38,7 +38,7 @@ spd=agt.speed;                       %rabbit migration speed in units per iterat
 %loc_food is food distribution in local search area
 %xmin in minimum x co-ord of this area
 %ymin is minimum y co-ord of this area
-[loc_food,xmin,ymin]=extract_local_food(cpos,spd);
+%[loc_food,xmin,ymin]=extract_local_food(cpos,spd);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 mig=0;                          %flag will be reset to one if rabbit migrates
