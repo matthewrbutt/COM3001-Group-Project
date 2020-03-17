@@ -42,7 +42,8 @@ if inf==0
             s=round(rand*(length(nrst)-1))+1;
             nrst=nrst(s);
         end
-        pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
+        %pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
+        pk=0.2
         if pk>rand
             IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
