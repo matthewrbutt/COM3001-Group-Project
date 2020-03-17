@@ -42,29 +42,7 @@ spd=agt.speed;                       %rabbit migration speed in units per iterat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 mig=0;                          %flag will be reset to one if rabbit migrates
-[xf,yf]=find(loc_food);        %extract all rows (=x) and columns (=y) of food matrix where food is present
-if ~isempty(xf)      
-    xa=xmin+xf-1;                  %x co-ordiantes of all squares containing food
-    ya=ymin+yf-1;                  %y co-ordiantes of all squares containing food
-    csep=sqrt((xa-pos(:,1)).^2+(ya-pos(:,2)).^2);   %calculate distance to all food
-    [d,nrst]=min(csep);     %d is distance to closest food, nrst is index of that food
-    if d<=spd       %if there is at least one lot of food within the search radius        
-        if length(nrst)>1       %if more lot of food located at same distance then randomly pick one to head towards
-            s=round(rand*(length(nrst)-1))+1;
-            nrst=nrst(s);
-        end
-        nx=xa(nrst)+rand-0.5;
-        ny=ya(nrst)+rand-0.5;
-        npos=[nx ny];
-        %if agent has left edge of model, then adjust slightly
-        shft=find(npos>=ENV_DATA.bm_size);
-        npos(shft)=ENV_DATA.bm_size-rand;
-        shft=find(npos<=1);
-        npos(shft)=1+rand;
-        mig=1;
-    end
-end
-    
+
 if mig==0                                   %rabbit has been unable to find food, so chooses a random direction to move in      
     cnt=1;
     dir=rand*2*pi;              
