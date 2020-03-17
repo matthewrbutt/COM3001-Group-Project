@@ -1,6 +1,7 @@
 function [nagent,nn]=agnt_solve(agent)
 
-%sequence of functions called to apply agent rules to current agent population.
+%sequence of functions called to apply agent rules to current agent
+%population.b
 %%%%%%%%%%%%
 %[nagent,nn]=agnt_solve(agent)
 %%%%%%%%%%%
