@@ -24,7 +24,7 @@ global PARAM IT_STATS N_IT MESSAGES
 klld=0;
 %thold=PARAM.R_MINFOOD;      %threshold minimum food value for death to occur
 %cfood=agt.food;             %get current agent food level
-age=agt.age;                %get current agent age
+%age=agt.age;                %get current agent age
 pos=agt.pos;                        %extract current position 
 spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
 
@@ -33,7 +33,7 @@ fx=find(typ==2);                                            %indices of all rabb
 rpos=MESSAGES.pos(fx,:);                                     %extract positions of all rabbits
 csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance to all rabbits
 [d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
-nrst=rb(ind);                                                  %index of nearest rabbit(s)
+nrst=fx(ind);                                                  %index of nearest rabbit(s)
 
 if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
     if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards

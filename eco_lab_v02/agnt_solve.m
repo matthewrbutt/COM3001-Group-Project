@@ -19,12 +19,10 @@ prev_n=n;   %remember current agent number at the start of this iteration
 for cn=1:n
 	curr=agent{cn};
     if isa(curr,'rabbit')|isa(curr,'fox')
-        [curr,eaten]=eat(curr,cn);               %eating rules (rabbits eat food, foxes eat rabbits)
-        if eaten==0
-            curr=migrate(curr,cn);              %if no food was eaten, then migrate in search of some
-        end
+        %[curr,eaten]=eat(curr,cn);               %eating rules (rabbits eat food, foxes eat rabbits
+        curr=migrate(curr,cn);              %if no food was eaten, then migrate in search of some
         [curr,klld]=die(curr,cn);                %death rule (from starvation or old age)
-        if klld==0
+        if klld==1
             new=[];
             [curr,new]=breed(curr,cn);			%breeding rule
             if ~isempty(new)					%if current agent has bred during this iteration

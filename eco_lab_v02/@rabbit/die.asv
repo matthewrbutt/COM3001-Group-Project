@@ -1,4 +1,4 @@
-function [agt,klld]=die(agt,cn)
+function [agt,klld,new]=die(agt,cn)
 
 %death function for class RABBIT
 %agt=rabbit object
@@ -42,18 +42,16 @@ if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search 
     end
     pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
     if pk>rand
-        nx=MESSAGES.pos(nrst,1);    %extract exact location of this rabbit
-        ny=MESSAGES.pos(nrst,2);
-        npos=[nx ny];    
-        agt.pos=npos;               %move agent to position of this rabbit
         IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
-        MESSAGES.dead(nrst)=1;       %send message to rabbit so it knows it's dead!
+        MESSAGES.dead(cn)=1;                %update message list
+        klld=1;
+        new_f=fox(0,pos,PARAM.F_SPD)
     end
 end
 
 
-if cfood<=thold|age>PARAM.R_MAXAGE      %if food level < threshold and age > max age then agent dies
-    IT_STATS.died_r(N_IT+1)=IT_STATS.died_r(N_IT+1)+1;  %update statistics
-    MESSAGES.dead(cn)=1;                %update message list
-    klld=1;
-end
+%if cfood<=thold|age>PARAM.R_MAXAGE      %if food level < threshold and age > max age then agent dies
+    %IT_STATS.died_r(N_IT+1)=IT_STATS.died_r(N_IT+1)+1;  %update statistics
+    %MESSAGES.dead(cn)=1;                %update message list
+    %klld=1;
+%end
