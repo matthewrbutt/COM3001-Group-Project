@@ -31,4 +31,6 @@ if age>=PARAM.F_MAXAGE      %if food level < threshold and age > max age then ag
   IT_STATS.died_f(N_IT+1)=IT_STATS.died_f(N_IT+1)+1;  %update statistics
   MESSAGES.dead(cn)=1;                %update message list
   klld=1;
+else
+  agt.age=age+1;
 end
