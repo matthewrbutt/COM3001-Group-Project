@@ -20,8 +20,8 @@ age=agt.age;                %get current agent age
 %last_breed=agt.last_breed;  %length of time since agent last reproduced
 pos=agt.pos;                %current position
 
-if age>PARAM.F_MAXAGE  %if age > max_age then create offspring
-   new=fox(0,cfood/2,pos,PARAM.F_SPD,0);   %new fox agent
+if age>=PARAM.F_MAXAGE  %if age > max_age then create offspring
+   new=rabbit(0,pos,PARAM.F_SPD,0);   %new fox agent
 %  agt.food=cfood/2; %divide food level between 2 agents
 %  agt.last_breed=0;
    agt.age=age+1;

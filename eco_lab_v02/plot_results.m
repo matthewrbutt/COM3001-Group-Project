@@ -56,8 +56,8 @@ function plot_results(agent,nsteps,fmode,outImages)
         subplot(3,1,3),cla
         %subplot(3,1,3),plot((1:N_IT+1),tot_food(1:N_IT+1),'m-');
         %subplot(3,1,3),axis([0 nsteps 0 tot_food(1)]);
-        subplot(3,1,1),title('No. live rabbits');
-        subplot(3,1,2),title('No. live foxes');
+        subplot(3,1,1),title('No. healthy humans');
+        subplot(3,1,2),title('No. infected humans');
         %subplot(3,1,3),title('Total food');
         drawnow
 
