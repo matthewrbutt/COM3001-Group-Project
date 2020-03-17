@@ -25,17 +25,32 @@ klld=0;
 %thold=PARAM.R_MINFOOD;      %threshold minimum food value for death to occur
 %cfood=agt.food;             %get current agent food level
 age=agt.age;                %get current agent age
+pos=agt.pos;                        %extract current position 
+spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
 
-for cn=1:n
-	curr=agent{cn};
-    if isa(curr,'fox')
-        
-       agent{cn}=curr;                          %up date cell array with modified agent data structure
+typ=MESSAGES.atype;                                         %extract types of all agents
+fx=find(typ==2);                                            %indices of all rabbits
+rpos=MESSAGES.pos(fx,:);                                     %extract positions of all rabbits
+csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance to all rabbits
+[d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
+nrst=rb(ind);                                                  %index of nearest rabbit(s)
+
+if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
+    if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards
+        s=round(rand*(length(nrst)-1))+1;
+        nrst=nrst(s);
+    end
+    pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
+    if pk>rand
+        IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
+        MESSAGES.dead(cn)=1;                %update message list
+        klld=1;
     end
 end
 
-if cfood<=thold|age>PARAM.R_MAXAGE      %if food level < threshold and age > max age then agent dies
-    IT_STATS.died_r(N_IT+1)=IT_STATS.died_r(N_IT+1)+1;  %update statistics
-    MESSAGES.dead(cn)=1;                %update message list
-    klld=1;
-end
+
+%if cfood<=thold|age>PARAM.R_MAXAGE      %if food level < threshold and age > max age then agent dies
+    %IT_STATS.died_r(N_IT+1)=IT_STATS.died_r(N_IT+1)+1;  %update statistics
+    %MESSAGES.dead(cn)=1;                %update message list
+    %klld=1;
+%end
