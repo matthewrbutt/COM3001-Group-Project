@@ -32,7 +32,7 @@ classdef rabbit   %declares rabbit object
                             error('Input argument is not a rabbit')
                             
                        end
-                    case 3               %create a new rabbit (currently the only constructor method used)
+                    case 4               %create a new rabbit (currently the only constructor method used)
                        r.age=varargin{1};               %age of rabbit object in number of iterations
                        %r.food=varargin{2};              %current food content (arbitrary units)
                        r.pos=varargin{2};               %current position in Cartesian co-ords [x y]
