@@ -59,14 +59,14 @@ function ecolab(size,nr,nf,nsteps,fmode,outImages)
                    CONTROL_DATA.fmode_display_every = CONTROL_DATA.fmode_control(2,test_l);
                end
            end
-            if IT_STATS.tot_r(n_it) == 0             %fastmode convergence - all rabbits eaten - all foxes will now die
-                disp('Fast mode convergence criteria satisfied - no rabbits left alive! > ')
-                break
-            end  
-            if IT_STATS.tot_f(n_it) == 0             %fastmode convergence - all foxes starved - rabbits will now proliferate unchecked until all vegitation is eaten
-                disp('Fast mode convergence criteria satisfied - no foxes left alive ! > ')
-                break
-            end
+%             if IT_STATS.tot_r(n_it) == 0             %fastmode convergence - all rabbits eaten - all foxes will now die
+%                 disp('Fast mode convergence criteria satisfied - no rabbits left alive! > ')
+%                 break
+%             end  
+%             if IT_STATS.tot_f(n_it) == 0             %fastmode convergence - all foxes starved - rabbits will now proliferate unchecked until all vegitation is eaten
+%                 disp('Fast mode convergence criteria satisfied - no foxes left alive ! > ')
+%                 break
+%             end
         end
     end
 eval(['save results_nr_' num2str(nr) '_nf_' num2str(nf) '.mat IT_STATS ENV_DATA' ]);
