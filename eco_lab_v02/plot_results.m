@@ -71,14 +71,14 @@ function plot_results(agent,nsteps,fmode,outImages)
         set(f3,'Position',[0.05 0.05 0.66 0.66]);
         v=(1:bm);
         [X,Y]=meshgrid(v);
-        Z=ENV_DATA.food;
+        %Z=ENV_DATA.food;
         H=zeros(bm,bm);
-        hs=surf(Y,X,H,Z);               %plot food distribution on plain background
+        %hs=surf(Y,X,H,Z);               %plot food distribution on plain background
         cm=colormap('gray');
         icm=flipud(cm);
         colormap(icm);
-        set(hs,'SpecularExponent',1);       %sets up lighting
-        set(hs,'SpecularStrength',0.1);
+        %set(hs,'SpecularExponent',1);       %sets up lighting
+        %set(hs,'SpecularStrength',0.1);
         hold on
 
         for cn=1:length(agent)                          %cycle through each agent in turn
