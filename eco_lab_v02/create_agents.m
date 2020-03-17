@@ -30,7 +30,7 @@ for r=1:nr
     age=0;
     %food=ceil(rand*20)+20;
     %lbreed=round(rand*PARAM.R_BRDFQ);
-    agent{r}=rabbit(age,pos,PARAM.R_SPD);
+    agent{r}=rabbit(age,pos,PARAM.R_SPD,0);
 end
 
 %generate all fox agents and record their positions in ENV_MAT_F

@@ -27,6 +27,7 @@ klld=0;
 %age=agt.age;                %get current agent age
 pos=agt.pos;                        %extract current position 
 spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
+inf=agt.inf;
 
 typ=MESSAGES.atype;                                         %extract types of all agents
 fx=find(typ==2);                                            %indices of all rabbits
@@ -35,16 +36,18 @@ csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance
 [d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
 nrst=fx(ind);                                                  %index of nearest rabbit(s)
 
-if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
-    if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards
-        s=round(rand*(length(nrst)-1))+1;
-        nrst=nrst(s);
-    end
-    pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
-    if pk>rand
-        IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
-        MESSAGES.dead(cn)=1;                %update message list
-        klld=1;
+if inf==0
+    if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
+        if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards
+            s=round(rand*(length(nrst)-1))+1;
+            nrst=nrst(s);
+        end
+        pk=1-(d/spd);                       %probability that fox will kill rabbit is ratio of speed to distance
+        if pk>rand
+            IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
+            MESSAGES.dead(cn)=1;                %update message list
+            klld=1;
+        end
     end
 end
 

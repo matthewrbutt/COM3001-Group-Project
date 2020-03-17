@@ -3,6 +3,7 @@ classdef rabbit   %declares rabbit object
         age; 
         pos;
         speed;
+        inf;
     end
     methods                         %note that this class definition mfile contains only the constructor method!
                                     %all additional member functions associated with this class are included as separate mfiles in the @rabbit folder. 
@@ -22,6 +23,7 @@ classdef rabbit   %declares rabbit object
                        %r.food=[];
                        r.pos=[];
                        r.speed=[];
+                       r.inf=[];
                        %r.last_breed=[];
                     case 1              %input is already a rabbit, so just return!
                        if (isa(varargin{1},'rabbit'))		
@@ -35,6 +37,7 @@ classdef rabbit   %declares rabbit object
                        %r.food=varargin{2};              %current food content (arbitrary units)
                        r.pos=varargin{2};               %current position in Cartesian co-ords [x y]
                        r.speed=varargin{3};             %number of kilometres rabbit can migrate in 1 day
+                       r.inf=varargin{4};
                        %r.last_breed=varargin{5};        %number of iterations since rabbit last reproduced.
                     otherwise
                        error('Invalid no. of input arguments')
