@@ -1,10 +1,10 @@
-function [agent]=create_agents(nr,nf)
+function [agent]=create_agents(nh,ni)
 
  %creates the objects representing each agent
  
 %agent - cell array containing list of objects representing agents
-%nr - number of rabbits
-%nf - number of foxes
+%nh - number of healthy humans
+%ni - number of infected humans
 
 %global parameters
 %ENV_DATA - data structure representing the environment (initialised in
@@ -17,29 +17,23 @@ function [agent]=create_agents(nr,nf)
  global ENV_DATA MESSAGES PARAM 
   
 bm_size=ENV_DATA.bm_size;
-rloc=(bm_size-1)*rand(nr,2)+1;      %generate random initial positions for rabbits
-floc=(bm_size-1)*rand(nf,2)+1;      %generate random initial positions for foxes
+hloc=(bm_size-1)*rand(nh,2)+1;      %generate random initial positions for healthy humans
+iloc=(bm_size-1)*rand(ni,2)+1;      %generate random initial positions for infected humans
 
-MESSAGES.pos=[rloc;floc];
+MESSAGES.pos=[hloc;iloc];
 
-%generate all rabbit agents and record their positions in ENV_MAT_R
-for r=1:nr
-    pos=rloc(r,:);
-    %create rabbit agents with random ages between 0 and 10 days and random
-    %food levels 20-40
+%generate all healthy agents and record their positions in ENV_MAT_R
+for h=1:nh
+    pos=hloc(h,:);
+    %create healthy agents with age 0
     age=0;
-    %food=ceil(rand*20)+20;
-    %lbreed=round(rand*PARAM.R_BRDFQ);
-    agent{r}=rabbit(age,pos,PARAM.R_SPD,0);
+    agent{h}=rabbit(age,pos,PARAM.R_SPD,0);
 end
 
-%generate all fox agents and record their positions in ENV_MAT_F
-for f=nr+1:nr+nf
-    pos=floc(f-nr,:);
-    %create fox agents with random ages between 0 and 10 days and random
-    %food levels 20-40
-    age=ceil(rand*10);
-    %food=ceil(rand*20)+20;
-    %lbreed=round(rand*PARAM.F_BRDFQ);
-    agent{f}=fox(age,pos,PARAM.F_SPD);
+%generate all infected agents and record their positions in ENV_MAT_F
+for i=nh+1:nh+ni
+    pos=iloc(i-nh,:);
+    %create infected agents with random age from 1-168
+    age=ceil(rand*168);
+    agent{i}=fox(age,pos,PARAM.F_SPD);
 end
