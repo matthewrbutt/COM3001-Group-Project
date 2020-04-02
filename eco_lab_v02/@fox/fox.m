@@ -17,11 +17,9 @@ classdef fox           %declares fox object
 
             switch nargin                     %Use switch statement with nargin,varargin contructs to overload constructor methods
                 case 0                        %create default object
-                    f.age=[];			
-                    %f.food=[];
+                    f.age=[];
                     f.pos=[];
                     f.speed=[];
-                    %f.last_breed=[];
                 case 1                         %input is already a fox, so just return!
                     if (isa(varargin{1},'fox'))		
                         f=varargin{1};

@@ -21,9 +21,6 @@ function initialise_results(nr,nf,nsteps)
                 'tot_c',[zeros(1,nsteps+1)],...             % total no. carriers
                 'tfood',[zeros(1,nsteps+1)]);               %remaining vegetation level
             
- 
- %tf=sum(sum(ENV_DATA.food));            %remaining food is summed over all squares in the environment
  IT_STATS.tot(1)=nr+nf;
  IT_STATS.tot_r(1)=nr;
  IT_STATS.tot_f(1)=nf;
- %IT_STATS.tfood(1)=tf;
