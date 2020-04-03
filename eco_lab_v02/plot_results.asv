@@ -72,7 +72,9 @@ function plot_results(agent,nsteps,fmode,outImages)
         set(f3,'Position',[0.05 0.05 0.66 0.66]);
         v=(1:bm);
         [X,Y]=meshgrid(v);
+        %Z=ENV_DATA.food;
         H=zeros(bm,bm);
+        %hs=surf(Y,X,H,Z);               %plot food distribution on plain background
         cm=colormap('gray');
         icm=flipud(cm);
         colormap(icm);
@@ -89,7 +91,7 @@ function plot_results(agent,nsteps,fmode,outImages)
                     fo=plot(pos(1),pos(2),'b.'); 
                     set(fo,'MarkerSize',30);
                 else
-                    co=plot(pos(1),pos(2),'g.');
+                    co=plot(pos(1),pos(2),
                 end
             end
         end
