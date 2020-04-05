@@ -18,12 +18,12 @@ prev_n=n;   %remember current agent number at the start of this iteration
 %execute existing agent update loop
 for cn=1:n
 	curr=agent{cn};
-    if isa(curr,'rabbit')|isa(curr,'fox')
+    if isa(curr,'healthy_human')|isa(curr,'infected_human')
         curr=migrate(curr,cn);                  %determine direction of movement
         [curr,klld]=die(curr,cn);               %check for infection
         if klld==1
             new=[];
-            [curr,new]=breed(curr,cn);			%if infected, "die" and create new infected agent
+            [curr,new]=spawn(curr,cn);			%if infected, "die" and create new infected agent
             if ~isempty(new)					%if current agent has "died" during this iteration
                  n_new=n_new+1;                 %increase new agent number
                  agent{n+n_new}=new;			%add new to end of agent list

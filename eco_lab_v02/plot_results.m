@@ -5,8 +5,8 @@ function plot_results(agent,nsteps,fmode,outImages)
     %plot_results(agent,nr,nf)
     %%%%%%%%%%%
     %agent - current list of agent structures
-    %nr -  no. rabbits
-    %nf -  no. rabbits
+    %nr -  no. healthy humans
+    %nf -  no. healthy humans
 
     % Modified by D Walker 3/4/08
 
@@ -29,7 +29,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     disp(strcat('No. agents migrating = ',num2str(IT_STATS.mig(N_IT+1))))
     disp(strcat('No. humans infected = ',num2str(IT_STATS.died_r(N_IT+1))))
     disp(strcat('No. humans cured = ',num2str(IT_STATS.died_f(N_IT+1))))
-    disp(strcat('No. rabbits eaten = ',num2str(IT_STATS.eaten(N_IT+1))))
+    disp(strcat('No. healthy humans eaten = ',num2str(IT_STATS.eaten(N_IT+1))))
 
     %plot line graphs of agent numbers and remaining food
     if (fmode==false) || (N_IT==nsteps) || ((fmode==true) && (rem(N_IT , CONTROL_DATA.fmode_display_every)==0))
@@ -38,7 +38,7 @@ function plot_results(agent,nsteps,fmode,outImages)
         %This value increases with the number of agents (see ecolab.m L57-61) as plotting more agents takes longer. 
         %fmode can be turned off in the command line - see ecolab documentation
 
-        col{1}='r-';                   %set up colours that will represent different cell types red for rabbits, blue for foxes
+        col{1}='r-';                   %set up colours that will represent different cell types red for healthy humans, blue for infected humans
         col{2}='b-';
 
         %tot_food=IT_STATS.tfood;       %total food remaining
@@ -84,7 +84,7 @@ function plot_results(agent,nsteps,fmode,outImages)
         for cn=1:length(agent)                          %cycle through each agent in turn
             if typ(cn)>0                                %only plot live agents
                 pos=get(agent{cn},'pos');               %extract current position    
-                if isa(agent{cn},'rabbit')              %choose plot colour depending on agent type
+                if isa(agent{cn},'healthy_human')              %choose plot colour depending on agent type
                     ro=plot(pos(1),pos(2),'r*');
                 else   
                     fo=plot(pos(1),pos(2),'b.'); 

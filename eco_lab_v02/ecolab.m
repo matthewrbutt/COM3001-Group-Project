@@ -10,8 +10,8 @@ function ecolab(size,nr,nf,nsteps,fmode,outImages)
 %ecolab(size,nr,nf,nsteps)
 %size = size of model environmnet in km (sugested value for plotting
 %purposes =50)
-%nr - initial number of rabbit agents
-%nf - initial number of fox agents
+%nr - initial number of healthy human agents
+%nf - initial number of infected human agents
 %nsteps - number of iterations required
 
 %definition of global variables:
@@ -39,7 +39,7 @@ function ecolab(size,nr,nf,nsteps,fmode,outImages)
     create_params;                      %sets the parameters for this simulation
     create_environment(size);           %creates environment data structure, given an environment size
     random_selection(1);                %randomises random number sequence (NOT agent order). If input=0, then simulation should be identical to previous for same initial values
-    [agent]=create_agents(nr,nf);       %create nr rabbit and nf fox agents and places them in a cell array called 'agents'
+    [agent]=create_agents(nr,nf);       %create nr healthy human and nf infected human agents and places them in a cell array called 'agents'
     create_messages(nr,nf,agent);       %sets up the initial message lists
     initialise_results(nr,nf,nsteps);   %initilaises structure for storing results
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,12 +59,12 @@ function ecolab(size,nr,nf,nsteps,fmode,outImages)
                    CONTROL_DATA.fmode_display_every = CONTROL_DATA.fmode_control(2,test_l);
                end
            end
-%             if IT_STATS.tot_r(n_it) == 0             %fastmode convergence - all rabbits eaten - all foxes will now die
-%                 disp('Fast mode convergence criteria satisfied - no rabbits left alive! > ')
+%             if IT_STATS.tot_r(n_it) == 0             %fastmode convergence - all healthy humans eaten - all infected humans will now die
+%                 disp('Fast mode convergence criteria satisfied - no healthy humans left alive! > ')
 %                 break
 %             end  
-%             if IT_STATS.tot_f(n_it) == 0             %fastmode convergence - all foxes starved - rabbits will now proliferate unchecked until all vegitation is eaten
-%                 disp('Fast mode convergence criteria satisfied - no foxes left alive ! > ')
+%             if IT_STATS.tot_f(n_it) == 0             %fastmode convergence - all infected humans starved - healthy humans will now proliferate unchecked until all vegitation is eaten
+%                 disp('Fast mode convergence criteria satisfied - no infected humans left alive ! > ')
 %                 break
 %             end
         end

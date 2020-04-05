@@ -1,6 +1,6 @@
 function val=get(c,prop_name)
 
-%standard function to allow extraction of memory parameters from rabbit object
+%standard function to allow extraction of memory parameters from infected human object
 
 switch prop_name
    
@@ -12,8 +12,8 @@ case 'pos'
     val=c.pos;
 case 'speed'
      val=c.speed;
-case 'last_breed'
-     val=c.last_breed; 
+case 'last_spawn'
+     val=c.last_spawn;  
 otherwise 
    error('invalid field name')
 end

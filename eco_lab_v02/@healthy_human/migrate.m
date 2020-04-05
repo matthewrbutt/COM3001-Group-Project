@@ -1,13 +1,13 @@
 function [agt]=migrate(agt,cn)
 
-%migration functions for class RABBIT
-%agt=rabbit object
+%migration functions for class HEALTHY_HUMAN
+%agt=healthy_human object
 %cn - current agent number
 
-%SUMMARY OF RABBIT MIGRATE RULE
-%Rabbits will migrate only if they have not eaten
-%Rabbits will always try to migrate towards the nearest food source
-%The rabbit will extract the distibution of food in its LOCAL environment (at
+%SUMMARY OF healthy human MIGRATE RULE
+%healthy humans will migrate only if they have not eaten
+%healthy humans will always try to migrate towards the nearest food source
+%The healthy human will extract the distibution of food in its LOCAL environment (at
 %distances < its daily migration limit)
 %It will identify the location of the nearest food and migrate into it.
 %It's new position will be randomly placed within this square
@@ -27,10 +27,10 @@ global ENV_DATA IT_STATS N_IT
    %    ENV_DATA.food is  a bm_size x bm_size array containing distribution
    %    of food
 
-mig=0;                               %indicates whether rabbit has successfully migrated
+mig=0;                               %indicates whether healthy human has successfully migrated
 pos=agt.pos;                         %extract current position 
 cpos=round(pos);                     %round up position to nearest grid point   
-spd=agt.speed;                       %rabbit migration speed in units per iteration - this is equal to the food search radius
+spd=agt.speed;                       %healthy human migration speed in units per iteration
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %This function reduces the computational overhead. Only LOCAL area
@@ -41,15 +41,15 @@ spd=agt.speed;                       %rabbit migration speed in units per iterat
 %[loc_food,xmin,ymin]=extract_local_food(cpos,spd);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-mig=0;                          %flag will be reset to one if rabbit migrates
+mig=0;                          %flag will be reset to one if healthy human migrates
 
-if mig==0                                   %rabbit has been unable to find food, so chooses a random direction to move in      
+if mig==0                                   %healthy human chooses a random direction to move in      
     cnt=1;
     dir=rand*2*pi;              
     while mig==0&cnt<=8                     
         npos(1)=pos(1)+spd*cos(dir);        %new x co-ordinate
         npos(2)=pos(2)+spd*sin(dir);        %new y co-ordinate
-        if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that fox has not left edge of model - correct if so.
+        if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that infected human has not left edge of model - correct if so.
            mig=1;
         end
         cnt=cnt+1;
