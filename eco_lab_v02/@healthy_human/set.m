@@ -7,11 +7,13 @@ switch prop_name
 %case 'food'
 %   c.food=val;
 case 'pos'
-    c.pos=val; 
+   c.pos=val; 
 case 'age'
    c.age=val;
 case 'speed'
-   c.speed=val; 
+   c.speed=val;
+case 'immunity'
+    c.immunity=val;
 %case 'last_spawn'
 %   c.last_spawn=val; 
 otherwise 

@@ -5,13 +5,15 @@ function val=get(c,prop_name)
 switch prop_name
    
 case 'age'
-   val=c.age;
+    val=c.age;
 % case 'food'
 %    val=c.food;
 case 'pos'
     val=c.pos;
 case 'speed'
-     val=c.speed;
+    val=c.speed;
+case 'immunity'
+    val=c.immunity;
 % case 'last_spawn'
 %      val=c.last_spawn; 
 otherwise 

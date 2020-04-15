@@ -56,11 +56,11 @@ if d<=spd&length(nrst)>0    %if there is at least one  healthy human within the 
         nx=MESSAGES.pos(nrst,1);    %extract exact location of this healthy human
         ny=MESSAGES.pos(nrst,2);
         npos=[nx ny];    
-        agt.food=cfood+1;           %increase agent food by one unit
+        %agt.food=cfood+1;           %increase agent food by one unit
         agt.pos=npos;               %move agent to position of this healthy human
         IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
-        eaten=1;
-        hungry=0;
+        %eaten=1;
+        %hungry=0;
         MESSAGES.dead(nrst)=1;       %send message to healthy human so it knows it's dead!
     end
 end

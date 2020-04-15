@@ -26,6 +26,7 @@ klld=0;
 pos=agt.pos;                        %extract current position 
 spd=agt.speed;                      %infected human migration speed in units per iteration
 inf=agt.inf;
+immunity=agt.immunity;
 
 typ=MESSAGES.atype;                                         %extract types of all agents
 fx=find(typ==2);                                            %indices of all healthy humans
@@ -34,7 +35,7 @@ csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance
 [d,ind]=min(csep);                                            %d is distance to closest healthy human, ind is index of that healthy human
 nrst=fx(ind);                                                  %index of nearest healthy human(s)
 
-if inf==0
+if inf==0 & immunity~=1
     if d<=spd&length(nrst)>0    %if there is at least one healthy human within the search radius        
         if length(nrst)>1       %if more than one healthy human located at same distance then randomly pick one to head towards
             s=round(rand*(length(nrst)-1))+1;

@@ -21,7 +21,7 @@ age=agt.age;                %get current agent age
 pos=agt.pos;                %current position
 
 if age>=PARAM.F_MAXAGE  %if age > max_age then healthy human is spawned
-   new=healthy_human(0,pos,PARAM.F_SPD,0);   %new healthy_human agent
+   new=healthy_human(0,pos,PARAM.R_SPD,0,1);   %new healthy_human agent
 %  agt.food=cfood/2; %divide food level between 2 agents
 %  agt.last_spawn=0;
    agt.age=age+1;

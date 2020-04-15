@@ -4,6 +4,7 @@ classdef healthy_human   %declares healthy_human object
         pos;
         speed;
         inf;
+        immunity;
     end
     methods                         %note that this class definition mfile contains only the constructor method!
                                     %all additional member functions associated with this class are included as separate mfiles in the @healthy_human folder. 
@@ -24,6 +25,7 @@ classdef healthy_human   %declares healthy_human object
                        r.pos=[];
                        r.speed=[];
                        r.inf=[];
+                       r.immunity=[];
                        %r.last_spawn=[];
                     case 1              %input is already a healthy human, so just return!
                        if (isa(varargin{1},'healthy_human'))		
@@ -32,12 +34,13 @@ classdef healthy_human   %declares healthy_human object
                             error('Input argument is not a healthy human')
                             
                        end
-                    case 4               %create a new healthy human (currently the only constructor method used)
+                    case 5               %create a new healthy human (currently the only constructor method used)
                        r.age=varargin{1};               %age of healthy_human object in number of iterations
                        %r.food=varargin{2};              %current food content (arbitrary units)
                        r.pos=varargin{2};               %current position in Cartesian co-ords [x y]
                        r.speed=varargin{3};             %number of kilometres healthy human can migrate in 1 day
                        r.inf=varargin{4};
+                       r.immunity=varargin{5};
                        %r.last_spawn=varargin{5};        %number of iterations since healthy human last reproduced.
                     otherwise
                        error('Invalid no. of input arguments')

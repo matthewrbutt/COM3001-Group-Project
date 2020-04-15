@@ -10,7 +10,7 @@ function [agt]=migrate(agt,cn)
 %degrees at it will try again (up to 8 times)
 %modified by D Walker 11/4/08
 
-global IT_STATS N_IT ENV_DATA
+global PARAM IT_STATS N_IT ENV_DATA
 
 %N_IT is current iteration number
 %IT_STATS is data structure containing statistics on model at each
@@ -26,12 +26,13 @@ global IT_STATS N_IT ENV_DATA
   
 bm=ENV_DATA.bm_size;   
 spd=agt.speed;   %fos migration speed in units per iteration - this is equal to the food search radius
-pos=agt.pos;     %extract current position 
+pos=agt.pos;     %extract current position
+age=agt.age;
 
 mig=0;
 cnt=1;
 dir=rand*2*pi;              %infected human chooses a random direction to move in
-while mig==0&cnt<=8        %infected human has up to 8 attempts to migrate (without leaving the edge of the model)
+while mig==0&cnt<=8&age<=PARAM.C_MAXAGE       %infected human has up to 8 attempts to migrate (without leaving the edge of the model)
     npos(1)=pos(1)+spd*cos(dir);        %new x co-ordinate
     npos(2)=pos(2)+spd*sin(dir);        %new y co-ordinate
     if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that infected human has not left edge of model - correct if so.
