@@ -33,7 +33,7 @@ end
 %generate all infected agents and record their positions in ENV_MAT_F
 for i=nh+1:nh+ni
     pos=iloc(i-nh,:);
-    %create infected agents with random age from 1-168
-    age=ceil(rand*168);
+    %create infected agents with age 0
+    age=0;
     agent{i}=infected_human(age,pos,PARAM.F_SPD);
 end

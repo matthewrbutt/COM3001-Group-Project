@@ -1,14 +1,9 @@
 function [nagent,nn]=update_messages(agent,prev_n,temp_n)
 
-%copy all surviving and new agents in to a new agent list - dead agents
-%will be empty structures
-
-%agent - list of existing agents, including those that have died in the
-%current iteration
+%agent - list of existing agents
 %prev_n - previous number of agents at the start of this iteration
-%temp_n - number of existing agents, including those that have died in the
-%current iteration
-%nagent - list of surviving agents and empty structures
+%temp_n - number of existing agents
+%nagent - list of agents and empty structures
 %nn - number of surviving agents
 
 %global variables
@@ -19,8 +14,10 @@ function [nagent,nn]=update_messages(agent,prev_n,temp_n)
    %    MESSAGES.atype - n x 1 array listing the type of each agent in the model
    %    (1=healthy human, 2-infected human, 3=dead agent)
    %    MESSAGES.pos - list of every agent position in [x y]
-   %    MESSAGE.dead - n x1 array containing ones for agents that have died
+   %    MESSAGES.dead - n x1 array containing ones for agents that have
+   %    despawned
    %    in the current iteration
+
 %ENV_DATA - is a data structure containing information about the model
    %environment
 
@@ -29,14 +26,14 @@ global MESSAGES IT_STATS N_IT ENV_DATA
 nagent=cell(1,temp_n);                  %initialise list for surviving agents
 nn=0;                                   %tracks number of surviving agents
 for cn=1:temp_n
-    if isempty(agent{cn})               %agent died in a previous iteration (not the current one)
+    if isempty(agent{cn})               %agent despawned in a previous iteration (not the current one)
         dead=1;
-    elseif cn<=prev_n                   %agent is not new, therefore it might have died
-        dead=MESSAGES.dead(cn);         %will be one for agents that have died, zero otherwise
+    elseif cn<=prev_n                   %agent is not new, therefore it might have despawned
+        dead=MESSAGES.dead(cn);         %will be one for agents that have despawned, zero otherwise
     else 
         dead=0;
     end
-    if dead==0                          %if agent is not dead
+    if dead==0                          %if agent has not despawned
         nagent{cn}=agent{cn};           %copy object into the new list
         pos=get(agent{cn},'pos');
         MESSAGES.pos(cn,:)=pos;                    
@@ -47,13 +44,12 @@ for cn=1:temp_n
              MESSAGES.atype(cn)=2;
              IT_STATS.tot_f(N_IT+1)=IT_STATS.tot_f(N_IT+1)+1;
          end
-         MESSAGES.dead(cn)=0;           %clear death message
+         MESSAGES.dead(cn)=0;           %clear despawned message
          nn=nn+1;
-    else                                %agent has died
+    else                                %agent has despawned
         MESSAGES.pos(cn,:)=[-1 -1];     %enter dummy position in list
-        MESSAGES.atype(cn)=0;           %set type to dead
-        MESSAGES.dead(cn)=0;            %clear death message
+        MESSAGES.atype(cn)=0;           %set type to despawned
+        MESSAGES.dead(cn)=0;            %clear despawned message
     end
 end
 IT_STATS.tot(N_IT+1)=nn;                %update total agent number
-% IT_STATS.tfood(N_IT+1)=sum(sum(ENV_DATA.food));   %total food remaining

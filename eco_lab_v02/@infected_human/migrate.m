@@ -8,7 +8,6 @@ function [agt]=migrate(agt,cn)
 %If a infected human has not eaten, it will pick a random migration direction
 %If it will leave the edge of the model, the direction is incremented by 45
 %degrees at it will try again (up to 8 times)
-%modified by D Walker 11/4/08
 
 global PARAM IT_STATS N_IT ENV_DATA
 
@@ -19,15 +18,12 @@ global PARAM IT_STATS N_IT ENV_DATA
 %environment
    %    ENV_DATA.shape - shape of environment - FIXED AS SQUARE
    %    ENV_DATA.units - FIXED AS KM
-   %    ENV_DATA.bm_size - length of environment edge in km
-   %    ENV_DATA.food is  a bm_size x bm_size array containing distribution
-   %    of food
-     
+   %    ENV_DATA.bm_size - length of environment edge in km    
   
 bm=ENV_DATA.bm_size;   
-spd=agt.speed;   %fos migration speed in units per iteration - this is equal to the food search radius
+spd=agt.speed;   %migration speed in units per iteration
 pos=agt.pos;     %extract current position
-age=agt.age;
+age=agt.age;    %current age
 
 mig=0;
 cnt=1;

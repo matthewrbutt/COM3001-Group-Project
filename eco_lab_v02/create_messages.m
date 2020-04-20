@@ -8,7 +8,8 @@ function create_messages(nr,nf,agent)
    %    MESSAGES.atype - n x 1 array listing the type of each agent in the model
    %    (1=healthy human, 2-infected human, 3=dead agent)
    %    MESSAGES.pos - list of every agent position in [x y]
-   %    MESSAGE.dead - n x1 array containing ones for agents that have died
+   %    MESSAGES.dead - n x1 array containing ones for agents that have
+   %    despawned
    %    in the current iteration
    
  global MESSAGES

@@ -1,11 +1,11 @@
-function [agt,klld]=die(agt,cn)
+function [agt,klld]=recover(agt,cn)
 
-%death function for class infected human
+%recover function for class infected human
 %agt=infected human object
 %cn - current agent number
-%klld=1 if agent dies, =0 otherwise
+%recovered=1 if agent recovers, =0 otherwise
 
-%infected humans die if their food level reaches zero or they are older than max_age
+%infected humans recover if they are older than max_age (infection is over)
 
 global PARAM IT_STATS N_IT MESSAGES
 
@@ -17,20 +17,20 @@ global PARAM IT_STATS N_IT MESSAGES
 %MESSAGES is a data structure containing information that agents need to
 %broadcast to each other
    %    MESSAGES.atype - n x 1 array listing the type of each agent in the model
-   %    (1=healthy human, 2-infected human, 3=dead agent)
+   %    (1=healthy human, 2-infected human, 3=recovered agent)
    %    MESSAGES.pos - list of every agent position in [x y]
-   %    MESSAGE.dead - n x1 array containing ones for agents that have died
+   %    MESSAGES.dead - n x1 array containing ones for agents that have
+   %    despawned
    %    in the current iteration
+
    
-klld=0;
-% thold=PARAM.F_MINFOOD;      %threshold minimum food value for death to occur
-% cfood=agt.food;             %get current agent food level
+recovered=0;
 age=agt.age;                %get current agent age
 
-if age>=PARAM.F_MAXAGE      %if food level < threshold and age > max age then agent dies
+if age>=PARAM.F_MAXAGE      %if age > max age then agent recovers
   IT_STATS.died_f(N_IT+1)=IT_STATS.died_f(N_IT+1)+1;  %update statistics
   MESSAGES.dead(cn)=1;                %update message list
-  klld=1;
+  recovered=1;
 else
   agt.age=age+1;
 end
