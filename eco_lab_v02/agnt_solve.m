@@ -20,8 +20,8 @@ for cn=1:n
 	curr=agent{cn};
     if isa(curr,'healthy_human')|isa(curr,'infected_human')
         curr=migrate(curr,cn);                  %determine direction of movement
-        [curr,recovered]=recover(curr,cn);               %check for infection
-        if recovered==1
+        [curr,infctd]=infected(curr,cn);               %check for infection
+        if infctd==1
             new=[];
             [curr,new]=spawn(curr,cn);			%if infected, "die" and create new infected agent
             if ~isempty(new)					%if current agent has "died" during this iteration
