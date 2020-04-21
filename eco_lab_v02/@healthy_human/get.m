@@ -10,6 +10,8 @@ case 'pos'
     val=c.pos;
 case 'speed'
     val=c.speed;
+case 'inf'
+    val=c.inf;
 case 'immunity'
     val=c.immunity;
 otherwise 

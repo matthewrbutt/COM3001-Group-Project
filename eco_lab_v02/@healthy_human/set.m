@@ -10,8 +10,10 @@ case 'age'
    c.age=val;
 case 'speed'
    c.speed=val;
+case 'inf'
+   c.inf=val;
 case 'immunity'
-    c.immunity=val;
+   c.immunity=val;
 otherwise 
    error('invalid field name')
 end

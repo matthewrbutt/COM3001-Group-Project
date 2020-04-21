@@ -32,7 +32,7 @@ classdef healthy_human   %declares healthy_human object
                        r.age=varargin{1};               %age of healthy_human object in number of iterations
                        r.pos=varargin{2};               %current position in Cartesian co-ords [x y]
                        r.speed=varargin{3};             %number of kilometres healthy human can migrate in 1 day
-                       r.inf=varargin{4};               %a boolean which stores if the agent is currently infected (but displaying no symptoms)
+                       r.inf=varargin{4};               %a boolean which stores if the agent is currently infected
                        r.immunity=varargin{5};          %a boolean which stores if the agent has developed immunity
                     otherwise
                        error('Invalid no. of input arguments')
