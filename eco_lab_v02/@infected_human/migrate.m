@@ -24,11 +24,20 @@ bm=ENV_DATA.bm_size;
 spd=agt.speed;   %migration speed in units per iteration
 pos=agt.pos;     %extract current position
 age=agt.age;    %current age
+%asymp=agt.asymp %asymptomatic status
 
 mig=0;
 cnt=1;
 dir=rand*2*pi;              %infected human chooses a random direction to move in
-while mig==0&cnt<=8&age<=PARAM.C_MAXAGE       %infected human has up to 8 attempts to migrate (without leaving the edge of the model)
+
+% if asymp==1
+%     movement_period=PARAM.C_MAXAGE+PARAM.F_MAXAGE
+% else
+%     movement_period=PARAM.C_MAXAGE
+%
+% Replace PARAM.C_MAXAGE with movement_period below if using this 
+
+while mig==0&cnt<=8&age<=PARAM.C_MAXAGE     %infected human has up to 8 attempts to migrate (without leaving the edge of the model)
     npos(1)=pos(1)+spd*cos(dir);        %new x co-ordinate
     npos(2)=pos(2)+spd*sin(dir);        %new y co-ordinate
     if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that infected human has not left edge of model - correct if so.

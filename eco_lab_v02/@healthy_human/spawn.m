@@ -19,4 +19,14 @@ age=agt.age;                %get current agent age
 %last_spawn=agt.last_spawn;  %length of time since agent last reproduced
 pos=agt.pos;         %current position
 
+% x=rand;
+% 
+% if x<0.16
+%     asymp=1
+% else
+%     asymp=0
+% end
+%
+% Add asymp as parameter below if using this
+
 new=infected_human(0,pos,PARAM.F_SPD);   %new infected human agent

@@ -10,6 +10,8 @@ case 'age'
    c.age=val;
 case 'speed'
    c.speed=val; 
+% case 'asymp'
+%    c.asymp=val;
 otherwise 
    error('invalid field name')
 end
