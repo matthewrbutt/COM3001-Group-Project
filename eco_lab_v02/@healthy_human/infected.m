@@ -3,7 +3,7 @@ function [agt,infctd]=infected(agt,cn)
 %death function for class HEALTHY_HUMAN
 %agt=healthy_human object
 %cn - current agent number
-%klld=1 if agent dies, =0 otherwise
+%infctd=1 if agent 'dies', =0 otherwise
 
 global PARAM IT_STATS N_IT MESSAGES
 %N_IT is current iteration number
@@ -20,24 +20,22 @@ global PARAM IT_STATS N_IT MESSAGES
    %    in the current iteration
 
 infctd=0;
-%thold=PARAM.R_MINFOOD;      %threshold minimum food value for death to occur
-%cfood=agt.food;             %get current agent food level
-%age=agt.age;                %get current agent age
+age=agt.age;                %get current agent age
 pos=agt.pos;                        %extract current position 
-spd=agt.speed;                      %infected human migration speed in units per iteration
-inf=agt.inf;
-immunity=agt.immunity;
+spd=agt.speed;                      %healthy human migration speed in units per iteration
+inf=agt.inf;                        %is the agent infected?
+immunity=agt.immunity;              %is the agent immune?
 
 typ=MESSAGES.atype;                                         %extract types of all agents
-fx=find(typ==2);                                            %indices of all healthy humans
-rpos=MESSAGES.pos(fx,:);                                     %extract positions of all healthy humans
-csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance to all healthy humans
-[d,ind]=min(csep);                                            %d is distance to closest healthy human, ind is index of that healthy human
-nrst=fx(ind);                                                  %index of nearest healthy human(s)
+fx=find(typ==2);                                            %indices of all infected humans
+rpos=MESSAGES.pos(fx,:);                                     %extract positions of all infected humans
+csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance to all infected humans
+[d,ind]=min(csep);                                            %d is distance to closest healthy human, ind is index of that infected human
+nrst=fx(ind);                                                  %index of nearest infected human(s)
 
 if inf==0 & immunity~=1
-    if d<=spd&length(nrst)>0    %if there is at least one healthy human within the search radius        
-        if length(nrst)>1       %if more than one healthy human located at same distance then randomly pick one to head towards
+    if d<=spd&length(nrst)>0    %if there is at least one infected human within the search radius        
+        if length(nrst)>1       %if more than one infected human located at same distance then randomly pick one to head away from
             s=round(rand*(length(nrst)-1))+1;
             nrst=nrst(s);
         end
