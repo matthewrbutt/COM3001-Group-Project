@@ -1,8 +1,5 @@
 function create_params
 
-%set up spawning, migration and starvation threshold parameters. These
-%are all completely made up!
-
 %PARAM - structure containing values of all parameters governing agent
 %behaviour for the current simulation
 
