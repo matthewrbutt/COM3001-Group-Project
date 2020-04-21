@@ -12,7 +12,6 @@ classdef healthy_human   %declares healthy_human object
                 %r=healthy human(age,food,pos....)
                 %
                 %age of agent (usually 0)
-                %food - amount of food that healthy human has eaten
                 %pos - vector containg x,y, co-ords 
 
                 %Modified by Martin Bayley on 29/01/13
@@ -20,13 +19,11 @@ classdef healthy_human   %declares healthy_human object
 
                 switch nargin           %Use switch statement with nargin,varargin contructs to overload constructor methods
                     case 0				%create default object
-                       r.age=[];			
-                       %r.food=[];
+                       r.age=[];
                        r.pos=[];
                        r.speed=[];
                        r.inf=[];
                        r.immunity=[];
-                       %r.last_spawn=[];
                     case 1              %input is already a healthy human, so just return!
                        if (isa(varargin{1},'healthy_human'))		
                             r=varargin{1};
@@ -41,7 +38,6 @@ classdef healthy_human   %declares healthy_human object
                        r.speed=varargin{3};             %number of kilometres healthy human can migrate in 1 day
                        r.inf=varargin{4};
                        r.immunity=varargin{5};
-                       %r.last_spawn=varargin{5};        %number of iterations since healthy human last reproduced.
                     otherwise
                        error('Invalid no. of input arguments')
                 end

@@ -1,4 +1,4 @@
-function [agt,klld]=die(agt,cn)
+function [agt,infctd]=infected(agt,cn)
 
 %death function for class HEALTHY_HUMAN
 %agt=healthy_human object
@@ -19,7 +19,7 @@ global PARAM IT_STATS N_IT MESSAGES
    %    MESSAGE.dead - n x1 array containing ones for agents that have died
    %    in the current iteration
 
-klld=0;
+infctd=0;
 %thold=PARAM.R_MINFOOD;      %threshold minimum food value for death to occur
 %cfood=agt.food;             %get current agent food level
 %age=agt.age;                %get current agent age
@@ -45,14 +45,7 @@ if inf==0 & immunity~=1
         if pk>rand
             IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
-            klld=1;
+            infctd=1;
         end
     end
 end
-
-
-%if cfood<=thold|age>PARAM.R_MAXAGE      %if food level < threshold and age > max age then agent dies
-    %IT_STATS.died_r(N_IT+1)=IT_STATS.died_r(N_IT+1)+1;  %update statistics
-    %MESSAGES.dead(cn)=1;                %update message list
-    %klld=1;
-%end
