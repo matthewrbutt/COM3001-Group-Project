@@ -1,4 +1,4 @@
-function [agt,klld]=recover(agt,cn)
+function [agt,recovered]=recover(agt,cn)
 
 %recover function for class infected human
 %agt=infected human object

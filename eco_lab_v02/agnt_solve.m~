@@ -23,15 +23,15 @@ for cn=1:n
     end
     if isa(curr,'infected_human')
         [curr,recovered]=recover(curr,cn);
-        if recovered==1
+        if infctd==1
             new=[];
-            [curr,new]=spawn(curr,cn);			%if recovered, "die" and create new healthy agent
+            [curr,new]=spawn(curr,cn);			%if infected, "die" and create new infected agent
             if ~isempty(new)					%if current agent has "died" during this iteration
                  n_new=n_new+1;                 %increase new agent number
                  agent{n+n_new}=new;			%add new to end of agent list
-            end
+             end
         end
-        agent{cn}=curr;    
+        
     end
     if isa(curr,'healthy_human')   
         [curr,infctd]=infected(curr,cn);               %check for infection
@@ -41,9 +41,9 @@ for cn=1:n
             if ~isempty(new)					%if current agent has "died" during this iteration
                  n_new=n_new+1;                 %increase new agent number
                  agent{n+n_new}=new;			%add new to end of agent list
-            end
+             end
         end
-        agent{cn}=curr;                          %up date cell array with modified agent data structure
+       agent{cn}=curr;                          %up date cell array with modified agent data structure
     end
 end
 
