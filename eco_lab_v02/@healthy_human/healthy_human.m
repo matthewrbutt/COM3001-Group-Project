@@ -9,13 +9,10 @@ classdef healthy_human   %declares healthy_human object
     methods                         %note that this class definition mfile contains only the constructor method!
                                     %all additional member functions associated with this class are included as separate mfiles in the @healthy_human folder. 
         function r=healthy_human(varargin) %constructor method for healthy_human - assigns values to healthy_human properties
-                %r=healthy human(age,food,pos....)
+                %r=healthy human(age,pos...)
                 %
                 %age of agent (usually 0)
                 %pos - vector containg x,y, co-ords 
-
-                %Modified by Martin Bayley on 29/01/13
-
 
                 switch nargin           %Use switch statement with nargin,varargin contructs to overload constructor methods
                     case 0				%create default object

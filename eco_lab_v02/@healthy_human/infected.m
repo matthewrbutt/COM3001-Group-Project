@@ -1,4 +1,4 @@
-function [agt,infctd]=infected(agt,cn)
+function [agt,inf]=infected(agt,cn)
 
 %death function for class HEALTHY_HUMAN
 %agt=healthy_human object
@@ -19,7 +19,6 @@ global PARAM IT_STATS N_IT MESSAGES
    %    MESSAGE.dead - n x1 array containing ones for agents that have died
    %    in the current iteration
 
-infctd=0;
 age=agt.age;                %get current agent age
 pos=agt.pos;                        %extract current position 
 spd=agt.speed;                      %healthy human migration speed in units per iteration
@@ -45,7 +44,7 @@ if inf==0 & immunity~=1
         if pk>rand                          %if infection succeeds then 'kill' agent and respawn as infected
             IT_STATS.died_i(N_IT+1)=IT_STATS.died_i(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
-            infctd=1;
+            inf=1;
         end
     end
 end

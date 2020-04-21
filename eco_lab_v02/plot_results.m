@@ -25,8 +25,8 @@ function plot_results(agent,nsteps,fmode,outImages)
     nf=IT_STATS.tot_i;
     disp(strcat('Iteration = ',num2str(N_IT)))
     disp(strcat('No. agents migrating = ',num2str(IT_STATS.mig(N_IT+1))))
-    disp(strcat('No. humans infected = ',num2str(IT_STATS.died_h(N_IT+1))))
-    disp(strcat('No. humans cured = ',num2str(IT_STATS.died_i(N_IT+1))))
+    disp(strcat('No. agents infected = ',num2str(IT_STATS.died_h(N_IT+1))))
+    disp(strcat('No. agents recovered = ',num2str(IT_STATS.died_i(N_IT+1))))
     disp(strcat('Total healthy agents: ',num2str(IT_STATS.tot_h(N_IT+1))))
     disp(strcat('Total infected agents: ',num2str(IT_STATS.tot_i(N_IT+1))))
 

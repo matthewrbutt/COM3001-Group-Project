@@ -5,14 +5,8 @@ function [agt]=migrate(agt,cn)
 %cn - current agent number
 
 %SUMMARY OF healthy human MIGRATE RULE
-%healthy humans will migrate only if they have not eaten
-%healthy humans will always try to migrate towards the nearest food source
-%The healthy human will extract the distibution of food in its LOCAL environment (at
-%distances < its daily migration limit)
-%It will identify the location of the nearest food and migrate into it.
-%It's new position will be randomly placed within this square
-%If no food is detected within its search radius it will move randomly (up
-%to 8 atempts without leaving the model edge)
+%Its new position will be randomly placed within this square
+%It will move randomly (up to 8 attempts without leaving the model edge)
 
 global ENV_DATA IT_STATS N_IT 
 %N_IT is current iteration number
@@ -24,22 +18,11 @@ global ENV_DATA IT_STATS N_IT
    %    ENV_DATA.shape - shape of environment - FIXED AS SQUARE
    %    ENV_DATA.units - FIXED AS KM
    %    ENV_DATA.bm_size - length of environment edge in km
-   %    ENV_DATA.food is  a bm_size x bm_size array containing distribution
-   %    of food
 
 mig=0;                               %indicates whether healthy human has successfully migrated
 pos=agt.pos;                         %extract current position 
 cpos=round(pos);                     %round up position to nearest grid point   
 spd=agt.speed;                       %healthy human migration speed in units per iteration
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%This function reduces the computational overhead. Only LOCAL area
-%is searched for food, as opposed to entire environment
-%loc_food is food distribution in local search area
-%xmin in minimum x co-ord of this area
-%ymin is minimum y co-ord of this area
-%[loc_food,xmin,ymin]=extract_local_food(cpos,spd);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 mig=0;                          %flag will be reset to one if healthy human migrates
 

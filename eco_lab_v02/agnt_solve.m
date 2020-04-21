@@ -34,8 +34,8 @@ for cn=1:n
         agent{cn}=curr;    
     end
     if isa(curr,'healthy_human')   
-        [curr,infctd]=infected(curr,cn);               %check for infection
-        if infctd==1
+        [curr,inf]=infected(curr,cn);               %check for infection
+        if inf==1
             new=[];
             [curr,new]=spawn(curr,cn);			%if infected, "die" and create new infected agent
             if ~isempty(new)					%if current agent has "died" during this iteration
