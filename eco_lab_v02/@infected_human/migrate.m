@@ -49,7 +49,9 @@ end
 
 if mig==1
     agt.pos=npos;                    %update agent memory
-    IT_STATS.mig(N_IT+1)=IT_STATS.mig(N_IT+1)+1;    %update model statistics
+    if spd > 0
+        IT_STATS.mig(N_IT+1)=IT_STATS.mig(N_IT+1)+1;    %update model statistics (if agent actually moves)
+    end
 end
 
 

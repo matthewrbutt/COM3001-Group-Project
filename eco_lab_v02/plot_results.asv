@@ -24,11 +24,12 @@ function plot_results(agent,nsteps,fmode,outImages)
     nr=IT_STATS.tot_h;
     nf=IT_STATS.tot_i;
     disp(strcat('Iteration = ',num2str(N_IT)))
+    disp(strcat('No. new healthy humans = ',num2str(IT_STATS.div_h(N_IT+1))))
+    disp(strcat('No. new infected humans = ',num2str(IT_STATS.div_i(N_IT+1))))
     disp(strcat('No. agents migrating = ',num2str(IT_STATS.mig(N_IT+1))))
     disp(strcat('No. humans infected = ',num2str(IT_STATS.died_h(N_IT+1))))
     disp(strcat('No. humans cured = ',num2str(IT_STATS.died_i(N_IT+1))))
-    disp(strcat('Total healthy agents: ',num2str(IT_STATS.tot_h(N_IT+1))))
-    disp(strcat('Total infected agents: ',num2str(IT_STATS.tot_i(N_IT+1))))
+    disp(strcat('No. healthy humans eaten = ',num2str(IT_STATS.eaten(N_IT+1))))
 
     %plot line graphs of agent numbers and remaining food
     if (fmode==false) || (N_IT==nsteps) || ((fmode==true) && (rem(N_IT , CONTROL_DATA.fmode_display_every)==0))

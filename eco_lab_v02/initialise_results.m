@@ -1,4 +1,4 @@
-function initialise_results(nr,nf,nsteps)
+function initialise_results(nh,ni,nsteps)
 
  global  IT_STATS ENV_DATA 
  
@@ -7,20 +7,18 @@ function initialise_results(nr,nf,nsteps)
 %iteration (number of agents etc)
 %ENV_DATA - data structure representing the environment 
  
- IT_STATS=struct('div_r',[zeros(1,nsteps+1);],...            %no. births per iteration
-                'div_f',[zeros(1,nsteps+1)],...
-                'died_r',[zeros(1,nsteps+1)],...			%no. agents dying per iteration
-                'died_f',[zeros(1,nsteps+1)],...		
-                'eaten',[zeros(1,nsteps+1)],...              %no. healthy humans eaten per iteration
+ IT_STATS=struct('div_h',[zeros(1,nsteps+1);],...            %no. births per iteration
+                'div_i',[zeros(1,nsteps+1)],...
+                'died_h',[zeros(1,nsteps+1)],...			%no. agents dying per iteration
+                'died_i',[zeros(1,nsteps+1)],...		
                 'mig',[zeros(1,nsteps+1)],...                %no. agents migrating per iteration
                 'tot',[zeros(1,nsteps+1)],...				%total no. agents in model per iteration
-                'tot_r',[zeros(1,nsteps+1)],...             % total no. healthy humans
-                'tot_f',[zeros(1,nsteps+1)],...             % total no. infected humans
-                'tfood',[zeros(1,nsteps+1)]);               %remaining vegetation level
+                'tot_h',[zeros(1,nsteps+1)],...             % total no. healthy humans
+                'tot_i',[zeros(1,nsteps+1)]);               %remaining vegetation level
             
  
  %tf=sum(sum(ENV_DATA.food));            %remaining food is summed over all squares in the environment
- IT_STATS.tot(1)=nr+nf;
- IT_STATS.tot_r(1)=nr;
- IT_STATS.tot_f(1)=nf;
+ IT_STATS.tot(1)=nh+ni;
+ IT_STATS.tot_h(1)=nh;
+ IT_STATS.tot_i(1)=ni;
  %IT_STATS.tfood(1)=tf;

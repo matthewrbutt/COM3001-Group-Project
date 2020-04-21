@@ -28,7 +28,7 @@ recovered=0;
 age=agt.age;                %get current agent age
 
 if age>=PARAM.F_MAXAGE      %if age > max age then agent recovers
-  IT_STATS.died_f(N_IT+1)=IT_STATS.died_f(N_IT+1)+1;  %update statistics
+  IT_STATS.died_i(N_IT+1)=IT_STATS.died_i(N_IT+1)+1;  %update statistics
   MESSAGES.dead(cn)=1;                %update message list
   recovered=1;
 else

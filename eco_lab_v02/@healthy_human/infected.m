@@ -43,7 +43,7 @@ if inf==0 & immunity~=1
         pk=0.02/d                            %probability that infected human will infect healthy human is ratio of speed to distance
         
         if pk>rand                          %if infection succeeds then 'kill' agent and respawn as infected
-            IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
+            IT_STATS.died_i(N_IT+1)=IT_STATS.died_i(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
             infctd=1;
         end

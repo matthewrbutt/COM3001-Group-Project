@@ -10,8 +10,6 @@ case 'pos'
     val=c.pos;
 case 'speed'
      val=c.speed;
-% case 'asymp'
-%       val=c.asymp
 otherwise 
    error('invalid field name')
 end

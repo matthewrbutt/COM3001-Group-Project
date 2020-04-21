@@ -39,10 +39,10 @@ for cn=1:temp_n
         MESSAGES.pos(cn,:)=pos;                    
          if isa(agent{cn},'healthy_human')
              MESSAGES.atype(cn)=1;
-             IT_STATS.tot_r(N_IT+1)=IT_STATS.tot_r(N_IT+1)+1;
+             IT_STATS.tot_h(N_IT+1)=IT_STATS.tot_h(N_IT+1)+1;
          elseif isa(agent{cn},'infected_human')
              MESSAGES.atype(cn)=2;
-             IT_STATS.tot_f(N_IT+1)=IT_STATS.tot_f(N_IT+1)+1;
+             IT_STATS.tot_i(N_IT+1)=IT_STATS.tot_i(N_IT+1)+1;
          end
          MESSAGES.dead(cn)=0;           %clear despawned message
          nn=nn+1;

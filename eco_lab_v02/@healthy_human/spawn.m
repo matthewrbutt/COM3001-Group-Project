@@ -15,14 +15,5 @@ global PARAM IT_STATS N_IT
 age=agt.age;                %get current agent age
 pos=agt.pos;         %current position
 
-% x=rand;
-% 
-% if x<0.16
-%     asymp=1
-% else
-%     asymp=0
-% end
-%
-% Add asymp as parameter below if using this
-
+IT_STATS.div_i(N_IT+1)=IT_STATS.div_i(N_IT+1)+1 %update stats
 new=infected_human(0,pos,PARAM.F_SPD);   %new infected human agent
