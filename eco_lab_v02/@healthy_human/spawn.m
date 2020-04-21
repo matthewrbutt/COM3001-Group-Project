@@ -18,9 +18,9 @@ pos=agt.pos;         %current position
 x=rand;
 
 if x<0.16
-    asymp=1
+    asymp=1;
 else
-    asymp=0
+    asymp=0;
 end
 
 IT_STATS.div_i(N_IT+1)=IT_STATS.div_i(N_IT+1)+1 %update stats
