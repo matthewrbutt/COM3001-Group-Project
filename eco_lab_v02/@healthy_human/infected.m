@@ -35,12 +35,14 @@ nrst=fx(ind);                                                  %index of nearest
 
 if inf==0 & immunity~=1
     if d<=spd&length(nrst)>0    %if there is at least one infected human within the search radius        
-        if length(nrst)>1       %if more than one infected human located at same distance then randomly pick one to head away from
+        if length(nrst)>1       %if more than one infected human located at same distance then randomly pick one
             s=round(rand*(length(nrst)-1))+1;
             nrst=nrst(s);
         end
+        
         pk=0.02/d                            %probability that infected human will infect healthy human is ratio of speed to distance
-        if pk>rand
+        
+        if pk>rand                          %if infection succeeds then 'kill' agent and respawn as infected
             IT_STATS.eaten(N_IT+1)=IT_STATS.eaten(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
             infctd=1;
