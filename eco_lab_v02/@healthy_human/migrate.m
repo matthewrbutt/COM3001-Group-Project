@@ -4,9 +4,10 @@ function [agt]=migrate(agt,cn)
 %agt=healthy_human object
 %cn - current agent number
 
-%SUMMARY OF healthy human MIGRATE RULE
-%Its new position will be randomly placed within this square
-%It will move randomly (up to 8 attempts without leaving the model edge)
+%SUMMARY OF HEALTHY HUMAN MIGRATE RULE
+%It will pick a random migration direction to move in
+%If it will leave the edge of the model, the direction is incremented by 45
+%degrees at it will try again (up to 8 times)
 
 global ENV_DATA IT_STATS N_IT 
 %N_IT is current iteration number

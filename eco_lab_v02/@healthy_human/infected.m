@@ -42,7 +42,7 @@ if inf==0 & immunity~=1
         pk=0.2/d                            %probability that infected human will infect healthy human is a function of distance to the closest infected human
         
         if pk>rand                          %if infection succeeds then 'kill' agent and respawn as infected
-            IT_STATS.died_i(N_IT+1)=IT_STATS.died_i(N_IT+1)+1;                %update model statistics
+            IT_STATS.died_h(N_IT+1)=IT_STATS.died_h(N_IT+1)+1;                %update model statistics
             MESSAGES.dead(cn)=1;                %update message list
             inf=1;
         end

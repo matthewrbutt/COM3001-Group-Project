@@ -4,8 +4,8 @@ function [agt]=migrate(agt,cn)
 %agt=infected_human object
 %cn - current agent number
 
-%SUMMARY OF infected human MIGRATE RULE
-%If a infected human has not eaten, it will pick a random migration direction
+%SUMMARY OF INFECTED HUMAN MIGRATE RULE
+%It will pick a random migration direction to move in
 %If it will leave the edge of the model, the direction is incremented by 45
 %degrees at it will try again (up to 8 times)
 

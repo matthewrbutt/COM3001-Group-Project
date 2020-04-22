@@ -12,7 +12,6 @@ global PARAM IT_STATS N_IT
 %PARAM is data structure containing migration speed and spawning
 %frequency parameters for both infected humans and healthy humans
    
-age=agt.age;                %get current agent age
 pos=agt.pos;         %current position
 
 x=rand;

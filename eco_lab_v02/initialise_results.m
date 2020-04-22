@@ -15,10 +15,7 @@ function initialise_results(nh,ni,nsteps)
                 'tot',[zeros(1,nsteps+1)],...				%total no. agents in model per iteration
                 'tot_h',[zeros(1,nsteps+1)],...             % total no. healthy humans
                 'tot_i',[zeros(1,nsteps+1)]);               %remaining vegetation level
-            
- 
- %tf=sum(sum(ENV_DATA.food));            %remaining food is summed over all squares in the environment
+           
  IT_STATS.tot(1)=nh+ni;
  IT_STATS.tot_h(1)=nh;
  IT_STATS.tot_i(1)=ni;
- %IT_STATS.tfood(1)=tf;

@@ -9,8 +9,6 @@ function [nagent,nn]=agnt_solve(agent)
 %nagent - list of updated agent structures
 %nn - total number of live agents at end of update
 
-%Created by Dawn Walker 3/4/08 
-
 n=length(agent);    %current no. of agents
 n_new=0;    %no. new agents
 prev_n=n;   %remember current agent number at the start of this iteration
