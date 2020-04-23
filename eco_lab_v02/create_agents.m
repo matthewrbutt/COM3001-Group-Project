@@ -27,7 +27,7 @@ for h=1:nh
     pos=hloc(h,:);
     %create healthy agents with age 0
     age=0;
-    agent{h}=healthy_human(age,pos,PARAM.R_SPD,0,0);
+    agent{h}=healthy_human(age,pos,PARAM.H_SPD,0,0);
 end
 
 %generate all infected agents and record their positions in ENV_MAT_F
@@ -41,5 +41,5 @@ for i=nh+1:nh+ni
     else
         asymp=0;
     end
-    agent{i}=infected_human(age,pos,PARAM.F_SPD,asymp);
+    agent{i}=infected_human(age,pos,PARAM.I_SPD,asymp);
 end
