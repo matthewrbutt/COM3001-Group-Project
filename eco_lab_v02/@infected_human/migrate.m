@@ -31,7 +31,7 @@ cnt=1;
 dir=rand*2*pi;              %infected human chooses a random direction to move in
 
 if asymp==1
-    movement_period=PARAM.C_MAXAGE+PARAM.F_MAXAGE;
+    movement_period=PARAM.C_MAXAGE+PARAM.I_MAXAGE;
 else
     movement_period=PARAM.C_MAXAGE;
 end
