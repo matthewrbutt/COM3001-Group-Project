@@ -7,6 +7,8 @@ function ecolab(size,nh,ni,nsteps,fmode,outImages)
 %AUTHOR Dawn Walker d.c.walker@sheffield.ac.uk
 %Created April 2008
 
+%Modified by Peter Bull & Matthew Butt April 2020
+
 %ecolab(size,nr,nf,nsteps)
 %size = size of model environmnet in km (sugested value for plotting
 %purposes =50)
@@ -61,5 +63,5 @@ function ecolab(size,nh,ni,nsteps,fmode,outImages)
            end
         end
     end
-eval(['save results_nr_' num2str(nh) '_nf_' num2str(ni) '.mat IT_STATS ENV_DATA' ]);
+eval(['save results_nh_' num2str(nh) '_ni_' num2str(ni) '.mat IT_STATS ENV_DATA' ]);
 clear global
