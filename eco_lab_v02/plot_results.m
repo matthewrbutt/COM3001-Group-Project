@@ -30,7 +30,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     disp(strcat('Total healthy agents: ',num2str(IT_STATS.tot_h(N_IT+1))))
     disp(strcat('Total infected agents: ',num2str(IT_STATS.tot_i(N_IT+1))))
 
-    %plot line graphs of agent numbers and remaining food
+    %plot line graphs of agent numbers
     if (fmode==false) || (N_IT==nsteps) || ((fmode==true) && (rem(N_IT , CONTROL_DATA.fmode_display_every)==0))
         
         %Plotting takes time so fmode has been introduced to only plot every n=CONTROL_DATA.fmode_display_every iterations
