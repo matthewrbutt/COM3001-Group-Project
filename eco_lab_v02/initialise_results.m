@@ -14,7 +14,7 @@ function initialise_results(nh,ni,nsteps)
                 'mig',[zeros(1,nsteps+1)],...                %no. agents migrating per iteration
                 'tot',[zeros(1,nsteps+1)],...				%total no. agents in model per iteration
                 'tot_h',[zeros(1,nsteps+1)],...             % total no. healthy humans
-                'tot_i',[zeros(1,nsteps+1)]);               %remaining vegetation level
+                'tot_i',[zeros(1,nsteps+1)]);               %total no. infected humans
            
  IT_STATS.tot(1)=nh+ni;
  IT_STATS.tot_h(1)=nh;
