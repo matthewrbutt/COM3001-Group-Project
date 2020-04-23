@@ -35,5 +35,11 @@ for i=nh+1:nh+ni
     pos=iloc(i-nh,:);
     %create infected agents with age 0
     age=0;
-    agent{i}=infected_human(age,pos,PARAM.F_SPD,0);
+    x=rand;
+    if x<0.16
+        asymp=1;
+    else
+        asymp=0;
+    end
+    agent{i}=infected_human(age,pos,PARAM.F_SPD,asymp);
 end
