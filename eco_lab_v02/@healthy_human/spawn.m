@@ -23,4 +23,4 @@ else
 end
 
 IT_STATS.div_i(N_IT+1)=IT_STATS.div_i(N_IT+1)+1 %update stats
-new=infected_human(0,pos,PARAM.F_SPD,asymp);   %new infected human agent
+new=infected_human(0,pos,PARAM.I_SPD,asymp);   %new infected human agent

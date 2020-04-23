@@ -12,8 +12,8 @@ function ecolab(size,nh,ni,nsteps,fmode,outImages)
 %ecolab(size,nr,nf,nsteps)
 %size = size of model environmnet in km (sugested value for plotting
 %purposes =50)
-%nr - initial number of healthy human agents
-%nf - initial number of infected human agents
+%nh - initial number of healthy human agents
+%ni - initial number of infected human agents
 %nsteps - number of iterations required
 
 %definition of global variables:
@@ -41,7 +41,7 @@ function ecolab(size,nh,ni,nsteps,fmode,outImages)
     create_params;                      %sets the parameters for this simulation
     create_environment(size);           %creates environment data structure, given an environment size
     random_selection(1);                %randomises random number sequence (NOT agent order). If input=0, then simulation should be identical to previous for same initial values
-    [agent]=create_agents(nh,ni);       %create nr healthy human and nf infected human agents and places them in a cell array called 'agents'
+    [agent]=create_agents(nh,ni);       %create nh healthy human and ni infected human agents and places them in a cell array called 'agents'
     create_messages(nh,ni,agent);       %sets up the initial message lists
     initialise_results(nh,ni,nsteps);   %initilaises structure for storing results
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

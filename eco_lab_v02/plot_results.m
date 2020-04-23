@@ -6,7 +6,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     %%%%%%%%%%%
     %agent - current list of agent structures
     %nh -  no. healthy humans
-    %ni -  no. healthy humans
+    %ni -  no. infected humans
 
     % Modified by D Walker 3/4/08
 
@@ -25,7 +25,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     nf=IT_STATS.tot_i;
     nm=IT_STATS.mig;
     disp(strcat('Iteration = ',num2str(N_IT)))
-    disp(strcat('No. agents migrating = ',num2str(IT_STATS.mig(N_IT+1))))
+    disp(strcat('No. agents migrating = ',num2str(IT_STATS.mig(N_IT+1))))           %Command window output
     disp(strcat('No. agents infected = ',num2str(IT_STATS.died_h(N_IT+1))))
     disp(strcat('No. agents recovered = ',num2str(IT_STATS.died_i(N_IT+1))))
     disp(strcat('Total healthy agents: ',num2str(IT_STATS.tot_h(N_IT+1))))
@@ -40,6 +40,7 @@ function plot_results(agent,nsteps,fmode,outImages)
 
         col{1}='r-';                   %set up colours that will represent different cell types red for healthy humans, blue for infected humans
         col{2}='b-';
+        col{3}='g-';
 
         n=nr(N_IT+1)+nf(N_IT+1);             %current agent number
         f2=figure(2);
@@ -57,7 +58,7 @@ function plot_results(agent,nsteps,fmode,outImages)
         subplot(3,1,2),title('No. infected humans');
 
         subplot(3,1,3),cla
-        subplot(3,1,3),plot((1:N_IT+1),nm(1:N_IT+1),col{1});        %Draw graph for migrating agents
+        subplot(3,1,3),plot((1:N_IT+1),nm(1:N_IT+1),col{3});        %Draw graph for migrating agents
         subplot(3,1,3),axis([0 nsteps 0 1.1*max(nm)]);
         subplot(3,1,3),title('No. migrating humans');
         
