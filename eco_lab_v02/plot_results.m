@@ -47,8 +47,8 @@ function plot_results(agent,nsteps,fmode,outImages)
         set(f2,'Position',[0.5 0.5 0.45 0.4]);
 
         subplot(3,1,1),cla
-        %subplot(3,1,1),plot((1:N_IT+1),nr(1:N_IT+1),col{1});        %Draw graph for healthy agents
-        %subplot(3,1,1),axis([0 nsteps 0 1.1*max(nr)]);
+        subplot(3,1,1),plot((1:N_IT+1),nr(1:N_IT+1),col{1});        %Draw graph for healthy agents
+        subplot(3,1,1),axis([0 nsteps 0 1.1*max(nr)]);
         subplot(3,1,1),title('No. healthy humans');
         
         subplot(3,1,2),cla
