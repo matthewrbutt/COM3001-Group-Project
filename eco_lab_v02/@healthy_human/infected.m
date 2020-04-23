@@ -39,7 +39,7 @@ if inf==0 & immunity~=1
             nrst=nrst(s);
         end
         
-        pk=0.2/d                            %probability that infected human will infect healthy human is a function of distance to the closest infected human
+        pk=0.2/d;                            %probability that infected human will infect healthy human is a function of distance to the closest infected human
         
         if pk>rand                          %if infection succeeds then 'kill' agent and respawn as infected
             IT_STATS.died_h(N_IT+1)=IT_STATS.died_h(N_IT+1)+1;                %update model statistics
