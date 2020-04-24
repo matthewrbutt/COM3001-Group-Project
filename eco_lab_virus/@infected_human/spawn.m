@@ -15,8 +15,8 @@ global PARAM IT_STATS N_IT
 age=agt.age;                %get current agent age
 pos=agt.pos;                %current position
 
-if age>=PARAM.F_MAXAGE+PARAM.C_MAXAGE  %if age > max_age then healthy human is spawned
-   new=healthy_human(0,pos,PARAM.R_SPD,0,1);   %new healthy_human agent
+if age>=PARAM.I_PERIOD+PARAM.S_DURATION  %if age > duration of infection then healthy human is spawned
+   new=healthy_human(0,pos,PARAM.H_SPD,0,1);   %new healthy_human agent
    agt.age=age+1;
    IT_STATS.div_h(N_IT+1)=IT_STATS.div_h(N_IT+1)+1;             %update statistics
 else                            

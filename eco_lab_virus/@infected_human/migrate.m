@@ -18,22 +18,22 @@ global PARAM IT_STATS N_IT ENV_DATA
 %environment
    %    ENV_DATA.shape - shape of environment - FIXED AS SQUARE
    %    ENV_DATA.units - FIXED AS KM
-   %    ENV_DATA.bm_size - length of environment edge in km    
+   %    ENV_DATA.bm_size - length of environment edge in km
   
 bm=ENV_DATA.bm_size;   
 spd=agt.speed;   %migration speed in units per iteration
 pos=agt.pos;     %extract current position
 age=agt.age;    %current age
-asymp=agt.asymp; %asymptomatic status
+asymp=agt.asymp; %is the agent asymptomatic?
 
 mig=0;
 cnt=1;
 dir=rand*2*pi;              %infected human chooses a random direction to move in
 
 if asymp==1
-    movement_period=PARAM.C_MAXAGE+PARAM.I_MAXAGE;
+    movement_period=PARAM.I_PERIOD+PARAM.S_DURATION;      %if the agent is asymptomatic, it can move during incubation period and symptom duration
 else
-    movement_period=PARAM.C_MAXAGE;
+    movement_period=PARAM.I_PERIOD;     %if the agent is not asymptomatic, it can only move during incubation period
 end
 
 while mig==0&cnt<=8&age<=movement_period     %infected human has up to 8 attempts to migrate (without leaving the edge of the model)

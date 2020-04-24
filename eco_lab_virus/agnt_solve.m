@@ -20,11 +20,11 @@ for cn=1:n
         curr=migrate(curr,cn);                  %determine direction of movement
     end
     if isa(curr,'infected_human')
-        [curr,recovered]=recover(curr,cn);
+        [curr,recovered]=recover(curr,cn);      %check for recovery
         if recovered==1
             new=[];
-            [curr,new]=spawn(curr,cn);			%if recovered, "die" and create new healthy agent
-            if ~isempty(new)					%if current agent has "died" during this iteration
+            [curr,new]=spawn(curr,cn);			%if recovered, 'die' and create new healthy agent
+            if ~isempty(new)					%if current agent has 'died' during this iteration
                  n_new=n_new+1;                 %increase new agent number
                  agent{n+n_new}=new;			%add new to end of agent list
             end
@@ -32,16 +32,16 @@ for cn=1:n
         agent{cn}=curr;    
     end
     if isa(curr,'healthy_human')   
-        [curr,inf]=infected(curr,cn);               %check for infection
+        [curr,inf]=infected(curr,cn);           %check for infection
         if inf==1
             new=[];
-            [curr,new]=spawn(curr,cn);			%if infected, "die" and create new infected agent
-            if ~isempty(new)					%if current agent has "died" during this iteration
+            [curr,new]=spawn(curr,cn);			%if infected, 'die' and create new infected agent
+            if ~isempty(new)					%if current agent has 'died' during this iteration
                  n_new=n_new+1;                 %increase new agent number
                  agent{n+n_new}=new;			%add new to end of agent list
             end
         end
-        agent{cn}=curr;                          %up date cell array with modified agent data structure
+        agent{cn}=curr;                          %update cell array with modified agent data structure
     end
 end
 

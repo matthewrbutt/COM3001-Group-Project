@@ -7,9 +7,9 @@ function initialise_results(nh,ni,nsteps)
 %iteration (number of agents etc)
 %ENV_DATA - data structure representing the environment 
  
- IT_STATS=struct('div_h',[zeros(1,nsteps+1);],...            %no. births per iteration
+ IT_STATS=struct('div_h',[zeros(1,nsteps+1);],...            %no. 'births' per iteration
                 'div_i',[zeros(1,nsteps+1)],...
-                'died_h',[zeros(1,nsteps+1)],...			%no. agents dying per iteration
+                'died_h',[zeros(1,nsteps+1)],...			%no. agents 'dying' per iteration
                 'died_i',[zeros(1,nsteps+1)],...		
                 'mig',[zeros(1,nsteps+1)],...                %no. agents migrating per iteration
                 'tot',[zeros(1,nsteps+1)],...				%total no. agents in model per iteration

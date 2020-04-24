@@ -14,7 +14,7 @@ global PARAM IT_STATS N_IT
    
 pos=agt.pos;         %current position
 
-x=rand;             %agent has a 16% chance of becoming an asymptotic carrier
+x=rand;             %agent has a 16% chance of becoming an asymptomatic carrier
 
 if x<0.16
     asymp=1;

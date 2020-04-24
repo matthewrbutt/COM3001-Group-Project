@@ -24,8 +24,8 @@ classdef infected_human           %declares infected human object
                 case 4                          %create a new infected human (currently the only constructor method used)
                     f.age=varargin{1};               %age of infected human object in number of iterations
                     f.pos=varargin{2};               %current position in Cartesian co-ords [x y]
-                    f.speed=varargin{3};             %number of kilometres infected human can migrate in 1 day
-                    f.asymp=varargin{4};               %is the agent asymptotic?
+                    f.speed=varargin{3};             %number of units infected human can migrate in 1 hour
+                    f.asymp=varargin{4};               %is the agent asymptomatic?
                 otherwise
                     error('Invalid no. of input arguments for infected human')
             end

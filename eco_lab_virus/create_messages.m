@@ -1,4 +1,4 @@
-function create_messages(nr,nf,agent)
+function create_messages(nh,ni,agent)
 
 %function that populates the global data structure representing
 %message information

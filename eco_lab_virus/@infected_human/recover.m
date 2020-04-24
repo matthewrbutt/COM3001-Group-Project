@@ -17,7 +17,7 @@ global PARAM IT_STATS N_IT MESSAGES
 %MESSAGES is a data structure containing information that agents need to
 %broadcast to each other
    %    MESSAGES.atype - n x 1 array listing the type of each agent in the model
-   %    (1=healthy human, 2-infected human, 3=recovered agent)
+   %    (1=healthy human, 2-infected human, 3=dead agent)
    %    MESSAGES.pos - list of every agent position in [x y]
    %    MESSAGES.dead - n x1 array containing ones for agents that have
    %    despawned
@@ -26,7 +26,7 @@ global PARAM IT_STATS N_IT MESSAGES
 recovered=0;
 age=agt.age;                %get current agent age
 
-if age>=PARAM.I_MAXAGE+PARAM.C_MAXAGE      %if age > max age then agent recovers
+if age>=PARAM.I_PERIOD+PARAM.S_DURATION      %if age > duration of infection then agent recovers
   IT_STATS.died_i(N_IT+1)=IT_STATS.died_i(N_IT+1)+1;  %update statistics
   MESSAGES.dead(cn)=1;                %update message list
   recovered=1;

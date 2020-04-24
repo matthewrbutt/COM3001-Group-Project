@@ -7,7 +7,7 @@ function [agt]=migrate(agt,cn)
 %SUMMARY OF HEALTHY HUMAN MIGRATE RULE
 %It will pick a random migration direction to move in
 %If it will leave the edge of the model, the direction is incremented by 45
-%degrees at it will try again (up to 8 times)
+%degrees and it will try again (up to 8 times)
 
 global ENV_DATA IT_STATS N_IT 
 %N_IT is current iteration number

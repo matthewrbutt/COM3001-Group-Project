@@ -22,7 +22,7 @@ iloc=(bm_size-1)*rand(ni,2)+1;      %generate random initial positions for infec
 
 MESSAGES.pos=[hloc;iloc];
 
-%generate all healthy agents and record their positions in ENV_MAT_R
+%generate all healthy agents
 for h=1:nh
     pos=hloc(h,:);
     %create healthy agents with age 0
@@ -30,12 +30,12 @@ for h=1:nh
     agent{h}=healthy_human(age,pos,PARAM.H_SPD,0,0);
 end
 
-%generate all infected agents and record their positions in ENV_MAT_F
+%generate all infected agents
 for i=nh+1:nh+ni
     pos=iloc(i-nh,:);
     %create infected agents with age 0
     age=0;
-    x=rand;
+    x=rand;         %agent has a 16% chance of becoming an asymptomatic carrier
     if x<0.16
         asymp=1;
     else
