@@ -33,7 +33,7 @@ csep=sqrt((rpos(:,1)-pos(:,1)).^2+(rpos(:,2)-pos(:,2)).^2);  %calculate distance
 [d,ind]=min(csep);                                            %d is distance to closest healthy human, ind is index of that infected human
 nrst=fx(ind);                                                  %index of nearest infected human(s)
 
-if inf==0 & immunity~=1         %if the healthy human is not infected and not immune
+if immunity~=1         %if the healthy human is not immune
     if d<=spd&length(nrst)>0    %if there is at least one infected human within the search radius        
         if length(nrst)>1       %if more than one infected human located at same distance then randomly pick one
             s=round(rand*(length(nrst)-1))+1;
